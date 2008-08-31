@@ -3,8 +3,8 @@
   <head>
     <title><%= "MoneyTracker - #{yield(:title)}" %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <%= stylesheet_link_tag 'mt_layout' %>
-    <%= stylesheet_link_tag 'mt_data_tables' %>
+    <%= stylesheet_link_tag 'mt_layout', 'mt_data_tables', 'facebox' %>
+    <%= javascript_include_tag 'jquery', 'facebox' %>
   </head>
   <body>
     <div id="topcontainer">
