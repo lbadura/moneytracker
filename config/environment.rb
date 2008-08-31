@@ -64,4 +64,9 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :garbage_collector
+  
 end
+
+# Regenerate js route methods
+Less::JsRoutes.generate! 
+
