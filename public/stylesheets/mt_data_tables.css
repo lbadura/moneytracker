@@ -1,0 +1,15 @@
+table.data-table {
+  border-collapse: collapse;
+  width: 99%;
+}
+
+table.data-table tr.data-item {
+  border-top: 1px solid #b9b9b9;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+table.data-table tr.data-item td {
+  text-align: center;
+  padding: 4px 0 4px 0;
+}
+
