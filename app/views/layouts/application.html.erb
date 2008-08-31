@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <%= stylesheet_link_tag 'mt_layout', 'mt_data_tables', 'facebox' %>
     <%= javascript_include_tag 'jquery', 'facebox', 'less_routes' %>
+    <%= javascript_tag "var authenticityToken = '#{form_authenticity_token}';" %>
   </head>
   <body>
     <div id="topcontainer">
