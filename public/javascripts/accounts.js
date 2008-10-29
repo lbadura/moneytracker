@@ -1,8 +1,14 @@
-$(document).ready(function() {
-  $("a#new-account-link").click(function() showNewAccountForm());  
-});
+/**
+ * This file contains all accounts specific code
+ */
+mt = {};
+mt.accounts = {};
 
-function showNewAccountForm() {
+
+/**
+ *  New account form
+ */
+mt.accounts.newAccountForm = function() {
   $.ajax({
     data: { 'authenticity_token' : authenticityToken },
     url: account_path("new"),
@@ -10,8 +16,21 @@ function showNewAccountForm() {
     dataType: 'html',
     success: function(data) { 
       $.facebox(data);
-      $('#add-account-button').click(function(event) { event.stopPropagation(); alert('a nie ma !'); } );
+      $('#add-account-button').bind('click', function(event) 
+        { 
+            event.stopPropagation();
+            event.preventDefault();
+            :x
+
+        });
     }
   });
   return false;
 }
+
+/**
+ *  Setup all elements
+ */
+$(document).ready(function() {
+  $("a#new-account-link").bind('click', mt.accounts.newAccountForm);  
+});
