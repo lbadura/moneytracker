@@ -6,8 +6,7 @@ module ApplicationHelper
       ]
       
       use = base
-      options = lambda {|x| @controller.class.to_s.downcase.gsub('controller','') == x.first.lowercase ? {:id => "current"} : nil }
           
-      use.map{|x| "<li>#{link_to(h(x.first), x.last, &options)}</li>"}.join('')
+      use.map{|x| "<li>#{link_to(h(x.first), x.last)}</li>"}.join('')
   end
 end

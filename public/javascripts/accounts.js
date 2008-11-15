@@ -20,8 +20,6 @@ mt.accounts.newAccountForm = function() {
         { 
             event.stopPropagation();
             event.preventDefault();
-            :x
-
         });
     }
   });
