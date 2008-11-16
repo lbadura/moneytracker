@@ -1,14 +1,10 @@
-/**
- * This file contains all accounts specific code
- */
-mt = {};
 mt.accounts = {};
-
 
 /**
  *  New account form
  */
 mt.accounts.newAccountForm = function() {
+  this.form = $("#new-account-form");
   $.ajax({
     data: { 'authenticity_token' : authenticityToken },
     url: account_path("new"),
@@ -16,11 +12,25 @@ mt.accounts.newAccountForm = function() {
     dataType: 'html',
     success: function(data) { 
       $.facebox(data);
-      $('#add-account-button').bind('click', function(event) 
-        { 
+      $('#add-account-button').bind('click', function(event) {
             event.stopPropagation();
             event.preventDefault();
-        });
+            $.ajax({
+              data: $(this.form).serialize(),
+              url: account_path("create"),
+              type: 'POST',
+              dataType: 'json',
+              success: function(envelope) {
+                if (envelope.ok) {
+                  $.facebox.close();
+                } else {
+                  if (envelope.errors) {
+                    mt.forms.displayRecordErrors('account', envelope);
+                  }
+                }
+              }
+            });
+      });
     }
   });
   return false;

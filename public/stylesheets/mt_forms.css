@@ -17,6 +17,17 @@ form.mt-form fieldset {
   padding: 0;
 }
 
+form.mt-form *.error-field {
+  border: 1px solid red;
+}
+
+form.mt-form span.error-explanation {
+  font-color: red;
+  border-bottom: 1px dotted red;
+  vertical-align: center;
+  float: right;
+}
+
 form.mt-form label {
   margin: 0;
   padding: 0;

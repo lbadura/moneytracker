@@ -15,10 +15,19 @@ class AccountsController < ApplicationController
     if @account.valid? then
       @account.transaction do
         @account.save
-        render(:json => {:status => 200})
+        respond_to do |format|
+          format.json {
+            render(:json => {:ok => true, :status => 200})
+          }
+        end
       end
     else
-      render(:nothing => true, :status => 400)
+      respond_to do |format|
+        format.json {
+          render(:json => {:ok => false, :errors => @account.errors, :status => 400})
+        }
+      end
     end
   end
+
 end
