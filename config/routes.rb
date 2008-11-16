@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :accounts
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -31,10 +30,13 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
+  # default route
   map.root :controller => "accounts"
+  map.connect 'accounts/refresh', :controller => 'accounts', :action => 'refresh'
 
-  # See how all your routes lay out with "rake routes"
+  # resources
+  map.resources :accounts
+
 
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'

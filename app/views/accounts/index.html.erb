@@ -1,19 +1,7 @@
 <%= javascript_include_tag "accounts" %>
 
 <a id="new-account-link" href="#">New account</a>
-<table id="list-of-accounts" class="data-table">
-  <thead>
-    <th>Name</th>
-    <th>Number</th>
-    <th>Owner</th>
-  </thead>
-  <tbody>
-    <% unless @accounts.nil? || @accounts.empty? then %>
-      <% @accounts.each do |account| %>
-        <%= render :partial => 'accounts/account_item', :locals => {:account => account} %>
-      <% end %>
-    <% else %>
-      <tr><td colspan="3"><div class="empty">No accounts defined</div>
-    <% end %>
-  </tbody>
-</table>
+
+<div id="accounts">
+  <%= render :partial => 'accounts/account_list', :locals => {:accounts => @accounts }%>
+</div>

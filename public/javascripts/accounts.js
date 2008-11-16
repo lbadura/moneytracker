@@ -22,6 +22,7 @@ mt.accounts.newAccountForm = function() {
               dataType: 'json',
               success: function(envelope) {
                 if (envelope.ok) {
+                  $("div#accounts").load(account_path('refresh')); 
                   $.facebox.close();
                 } else {
                   if (envelope.errors) {

@@ -17,17 +17,23 @@ class AccountsController < ApplicationController
         @account.save
         respond_to do |format|
           format.json {
-            render(:json => {:ok => true, :status => 200})
+            return render(:json => {:ok => true, :status => 200})
           }
         end
       end
     else
       respond_to do |format|
         format.json {
-          render(:json => {:ok => false, :errors => @account.errors, :status => 400})
+          return render(:json => {:ok => false, :errors => @account.errors, :status => 400})
         }
       end
     end
+  end
+
+  expose :get, :refresh
+  def refresh
+    @accounts = Account.find(:all, :order => "name ASC")  
+    return render(:partial => 'accounts/account_list')
   end
 
 end
