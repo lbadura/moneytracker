@@ -9,6 +9,16 @@ class AccountsController < ApplicationController
     return render(:partial => 'accounts/new_account_form')
   end
 
+  expose :post, :destroy
+  def destroy
+    @account = Account.find(:params[:id])
+    if @account.destroy then
+      render(:layout => false, :json => {:status => 200, :ok => true})
+    else
+      render(:layout => false, :json => {:status => 400, :ok => false})
+    end
+  end
+
   expose :post, :create
   def create
     @account = Account.new(params[:account])

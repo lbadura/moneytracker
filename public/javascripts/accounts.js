@@ -38,8 +38,24 @@ mt.accounts.newAccountForm = function() {
 }
 
 /**
+ * Edit account button
+ */
+mt.accounts.editAccount = function(ev) {
+  alert('To be implemented');
+}
+
+/**
+ * Handle deleting accounts
+ */
+mt.accounts.deleteAccount = function(ev) {
+  alert('Deleting: to be implemented');
+}
+
+/**
  *  Setup all elements
  */
 $(document).ready(function() {
   $("a#new-account-link").bind('click', mt.accounts.newAccountForm);  
+  $("a.edit-account-link").bind('click', mt.accounts.editAccount);
+  $("a.delete-account-link").bind('click', mt.accounts.deleteAccount);
 });
