@@ -1,0 +1,23 @@
+form.mt-form {
+  
+}
+
+form.mt-form ul {
+  list-style: none;
+}
+
+form.mt-form li {
+  margin: 0;
+  display: inline;
+  float: right;
+}
+
+form.mt-form fieldset {
+  border: 0;
+  padding: 0;
+}
+
+form.mt-form label {
+  margin: 0;
+  padding: 0;
+}
