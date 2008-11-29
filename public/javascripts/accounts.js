@@ -48,14 +48,28 @@ mt.accounts.editAccount = function(ev) {
  * Handle deleting accounts
  */
 mt.accounts.deleteAccount = function(ev) {
-  alert('Deleting: to be implemented');
+  accountId = $(ev.target).parents().find("div.account-controls").attr("id").substr(17);
+  $.ajax({
+    data: { 'authenticity_token' : authenticityToken, 'id' : accountId },
+    url: account_path(accountId),
+    type: 'DELETE',
+    dataType: 'json',
+    beforeSend: function() { return confirm("Are you sure you want to delete this account ?")},
+    success: function(envelope) {
+      if (envelope.ok) {
+        $("div#accounts").load(account_path('refresh')); 
+      } else {
+        // FIXME: handle errors
+      }
+    }
+  });
 }
 
 /**
  *  Setup all elements
  */
 $(document).ready(function() {
-  $("a#new-account-link").bind('click', mt.accounts.newAccountForm);  
-  $("a.edit-account-link").bind('click', mt.accounts.editAccount);
-  $("a.delete-account-link").bind('click', mt.accounts.deleteAccount);
+  $("a#new-account-link").livequery('click', mt.accounts.newAccountForm);  
+  $("a.edit-account-link").livequery('click', mt.accounts.editAccount);
+  $("a.delete-account-link").livequery('click', mt.accounts.deleteAccount);
 });
