@@ -41,14 +41,46 @@ mt.accounts.newAccountForm = function() {
  * Edit account button
  */
 mt.accounts.editAccount = function(ev) {
-  alert('To be implemented');
+  accountId = mt.accounts.getAccountId($(ev.target));
+  this.form = $("#new-account-form");
+  $.ajax({
+  data: { 'authenticity_token' : authenticityToken, 'id' : accountId },
+    url: account_path("edit"),
+    type: 'POST',
+    dataType: 'html',
+    success: function(data) { 
+      $.facebox(data);
+      $('#add-account-button').bind('click', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            $.ajax({
+              data: $(this.form).serialize(),
+              url: account_path("update"),
+              type: 'POST',
+              dataType: 'json',
+              success: function(envelope) {
+                if (envelope.ok) {
+                  $("div#accounts").load(account_path('refresh')); 
+                  $.facebox.close();
+                } else {
+                  if (envelope.errors) {
+                    mt.forms.displayRecordErrors('account', envelope);
+                  }
+                }
+              }
+            });
+      });
+    }
+  });
+  return false;
+
 }
 
 /**
  * Handle deleting accounts
  */
 mt.accounts.deleteAccount = function(ev) {
-  accountId = $(ev.target).parents().find("div.account-controls").attr("id").substr(17);
+  accountId = mt.accounts.getAccountId($(ev.target));
   $.ajax({
     data: { 'authenticity_token' : authenticityToken, 'id' : accountId },
     url: account_path(accountId),
@@ -63,6 +95,13 @@ mt.accounts.deleteAccount = function(ev) {
       }
     }
   });
+}
+
+/**
+ * Helper function to get account id according to a control icon clicked
+ */
+mt.accounts.getAccountId = function(element) {
+  return element.parents().find("div.account-controls").attr("id").substr(17);
 }
 
 /**
