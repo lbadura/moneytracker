@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
 
   expose :get, :new
   def new
-    return render(:partial => 'accounts/new_account_form')
+    return render(:partial => 'accounts/new_account_form', :locals => {:update => false})
   end
 
   expose [:post, :delete], :destroy
@@ -49,11 +49,14 @@ class AccountsController < ApplicationController
   expose :post, :edit
   def edit
     @account = Account.find_by_id params[:id] unless params[:id].nil? || params[:id].empty?
-    return render(:partial => 'accounts/new_account_form')
+    return render(:partial => 'accounts/new_account_form', :locals => {:update => true})
   end
 
   expose [:put, :post], :update
   def update
+    @account = Account.find_by_id(params[:id]) unless params[:id].nil? || params[:id].empty? 
+    @account.update_attributes(params[:account])
+    return render(:nothing => true, :layout => false)
   end
 
 end

@@ -5,6 +5,7 @@
       <li>
         <label for="name">Name</label>
         <%= text_field(:account, :name) %>
+        <%= hidden_field_tag(:id, params[:id]) %>
       </li>
       <li>
         <label for="iban">IBAN</label>
@@ -19,8 +20,8 @@
         <%= text_field(:account, :owner) %>
       </li>
       <li>
-        <input type="button" name="add-account-button" id="add-account-button" value="Add account">
       </li>
     </ul>
+    <input type="button" name="add-account-button" id="add-account-button" value="<%= update ? "Update" : "Add" %>">
   </fieldset>
 <% end -%>
