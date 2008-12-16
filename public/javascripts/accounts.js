@@ -89,7 +89,10 @@ mt.accounts.deleteAccount = function(ev) {
     beforeSend: function() { return confirm("Are you sure you want to delete this account ?")},
     success: function(envelope) {
       if (envelope.ok) {
-        $("div#accounts").load(account_path('refresh')); 
+        var accountsContainer = $("div#accounts");
+        if (accountsContainer.length > 0) {
+          accountsContainer.load(account_path('refresh')); 
+        }
       } else {
         // FIXME: handle errors
       }

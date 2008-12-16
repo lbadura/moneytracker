@@ -1,5 +1,5 @@
+<table id="list-of-accounts" class="data-table">
 <% unless @accounts.nil? || @accounts.empty? then %>
-  <table id="list-of-accounts" class="data-table">
     <thead>
       <th>Name</th>
       <th>Number</th>
@@ -10,7 +10,7 @@
           <%= render :partial => 'accounts/account_item', :locals => {:account => account} %>
         <% end %>
 <% else %>
-  <tr><td colspan="4"><div class="empty">No accounts defined</div>
+    <tr><td colspan="4"><div class="empty">No accounts defined</div>
 <% end %>
     </tbody>
-  </table>
+</table>
