@@ -1,16 +1,16 @@
 <table id="list-of-accounts" class="data-table">
 <% unless @accounts.nil? || @accounts.empty? then %>
     <thead>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Owner</th>
+      <th><%=t :account_name %></th>
+      <th><%=t :account_number %></th>
+      <th><%=t :account_owner %></th>
     </thead>
     <tbody>
         <% @accounts.each do |account| %>
           <%= render :partial => 'accounts/account_item', :locals => {:account => account} %>
         <% end %>
 <% else %>
-    <tr><td colspan="4"><div class="empty">No accounts defined</div>
+    <tr><td colspan="4"><div class="empty"><%=t :no_accounts %></div>
 <% end %>
     </tbody>
 </table>

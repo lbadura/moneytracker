@@ -1,6 +1,6 @@
 <%= javascript_include_tag "accounts" %>
 
-<a id="new-account-link" href="#"><%= image_tag('icons/new.png') %>New account</a>
+<a id="new-account-link" href="javascript:void(0)"><%= image_tag('icons/new.png') %><%=t :new_account %></a>
 
 <div id="accounts">
   <%= render :partial => 'accounts/account_list', :locals => {:accounts => @accounts }%>

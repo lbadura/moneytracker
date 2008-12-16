@@ -3,25 +3,25 @@
   <fieldset>
     <ul>
       <li>
-        <label for="name">Name</label>
+        <label for="name"><%=t :account_name %></label>
         <%= text_field(:account, :name) %>
         <%= hidden_field_tag(:id, params[:id]) %>
       </li>
       <li>
-        <label for="iban">IBAN</label>
+        <label for="iban"><%=t :account_iban %></label>
         <%= text_field(:account, :iban) %>
       </li>
       <li>
-        <label for="number">Alternative number</label>
+        <label for="number"><%=t :account_alternative_number %></label>
         <%= text_field(:account, :number) %>
       </li>
       <li>
-        <label for="owner">Owner's name</label>
+        <label for="owner"><%=t :account_owner %></label>
         <%= text_field(:account, :owner) %>
       </li>
       <li>
       </li>
     </ul>
-    <input type="button" name="add-account-button" id="add-account-button" value="<%= update ? "Update" : "Add" %>">
+    <input type="button" name="add-account-button" id="add-account-button" value="<%= update ? t(:update) : t(:add) %>">
   </fieldset>
 <% end -%>

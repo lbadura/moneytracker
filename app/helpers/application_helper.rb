@@ -2,7 +2,7 @@
 module ApplicationHelper
   def main_menu()
       base = [
-        ['Accounts', {:controller => 'accounts', :action => 'index'}],
+        [t(:accounts), {:controller => 'accounts', :action => 'index'}],
       ]
       
       use = base

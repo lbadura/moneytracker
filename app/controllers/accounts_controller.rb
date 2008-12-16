@@ -54,8 +54,10 @@ class AccountsController < ApplicationController
 
   expose [:put, :post], :update
   def update
-    @account = Account.find_by_id(params[:id]) unless params[:id].nil? || params[:id].empty? 
-    @account.update_attributes(params[:account])
+    Account.transaction do
+      @account = Account.find_by_id(params[:id]) unless params[:id].nil? || params[:id].empty? 
+      @account.update_attributes(params[:account])
+    end
     return render(:json => {:ok => true, :status => 200})
   end
 

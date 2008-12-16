@@ -1,0 +1,16 @@
+pl:
+  new_account: 'Nowe konto'
+  account_name: 'Nazwa'
+  account_number: 'Numer'
+  account_owner: 'Właściciel'
+  no_accounts: 'Nie posiadasz żadnych kont'
+  account_iban: 'Numer IBAN'
+  account_alternative_number: 'Alternatywny numer konta'
+en:
+  new_account: 'New account'
+  account_name: 'Name'
+  account_number: 'Number'
+  account_owner: 'Owner'
+  no_accounts: 'No accounts defined'
+  account_iban: 'IBAN'
+  account_alternative_number: 'Alternative account number'
