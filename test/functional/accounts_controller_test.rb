@@ -1,5 +1,6 @@
 require 'test_helper'
 require 'accounts_controller'
+require 'json'
 
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
@@ -27,5 +28,21 @@ class AccountsControllerTest < Test::Unit::TestCase
       assert_select '[value=Add]'
     end
     assert_response :success
+  end
+
+  def test_deleting_an_account
+    account = accounts(:first)
+    post :destroy, :id => account.id
+    response = JSON.parse(@response.body)
+    assert_response :success
+    assert_equal 200, response['status'] 
+    assert_equal true, response['ok'] 
+  end
+
+  def test_deleting_an_nonexisting_account
+    post :destroy, :id => nil
+    response = JSON.parse(@response.body)
+    assert_equal 400, response['status'] 
+    assert_equal false, response['ok'] 
   end
 end

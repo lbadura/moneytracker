@@ -11,10 +11,11 @@ class AccountsController < ApplicationController
 
   expose [:post, :delete], :destroy
   def destroy
-    @account = Account.find(params[:id])
-    if @account.destroy then
+    begin
+      @account = Account.find(params[:id])
+      @account.destroy
       render(:layout => false, :json => {:status => 200, :ok => true})
-    else
+    rescue
       render(:layout => false, :json => {:status => 400, :ok => false})
     end
   end
