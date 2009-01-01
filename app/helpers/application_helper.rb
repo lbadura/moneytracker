@@ -3,10 +3,9 @@ module ApplicationHelper
   def main_menu()
       base = [
         [t(:accounts), {:controller => 'accounts', :action => 'index'}],
+        [t(:operations), {:controller => 'operations', :action => 'index'}],
       ]
       
-      use = base
-          
-      use.map{|x| "<li>#{link_to(h(x.first), x.last)}</li>"}.join('')
+      base.map{|x| "<li>#{link_to(h(x.first), x.last)}</li>"}.join('')
   end
 end

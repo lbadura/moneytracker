@@ -1,4 +1,6 @@
 pl:
   accounts: 'Konta'
+  operations: 'Operacje'
 en:
   accounts: 'Accounts'
+  operations: 'Operations'
