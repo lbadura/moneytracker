@@ -89,3 +89,16 @@ a {
   color: #039;
   text-decoration: none;
 }
+
+div#account-list {
+  margin-top: 20px;
+}
+
+div#context-menu {
+}
+
+div#footer {
+  margin: 0 auto;
+  width: 99%;
+  text-align: center;
+}
