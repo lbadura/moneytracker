@@ -47,7 +47,7 @@ class AccountsController < ApplicationController
     return render(:partial => 'accounts/account_list')
   end
 
-  expose :post, :edit
+  expose :get, :edit
   def edit
     @account = Account.find_by_id params[:id] unless params[:id].nil? || params[:id].empty?
     return render(:partial => 'accounts/new_account_form', :locals => {:update => true})

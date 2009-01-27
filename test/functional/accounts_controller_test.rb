@@ -13,6 +13,7 @@ class AccountsControllerTest < Test::Unit::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     I18n.locale = 'en'
+    @account = Account.find(:first)
   end
   
   def test_index_action
@@ -58,16 +59,34 @@ class AccountsControllerTest < Test::Unit::TestCase
 
   def test_creating_an_invalid_account
     post :create, :account => {:owner=> "lolo", :number => "001989837173"}
-    response = JSON.parse!(@response.body)
+    response = JSON.parse(@response.body)
     assert_equal 400, response['status']
     assert_equal false, response['ok']
   end
 
-  context "on :get should refresh account list" do
+  context "on get :refresh should refresh account list" do
     setup {get :refresh}
     should_respond_with :success
     should_assign_to :accounts
     should_render_template 'accounts/_account_list'
+  end
+
+  context "on get :edit should display the account edit form" do
+    setup {get :edit, :id => @account.id}
+    should_respond_with :success
+    should_assign_to :account
+    should_render_template 'accounts/_new_account_form.html.erb'
+  end
+
+  context "on put :update should update account and refresh list" do
+    setup {put :update, {:id => @account.id, :name => "ziazia"}}
+    should_respond_with :success
+    should_assign_to :account
+    should "return proper status" do
+      response = JSON.parse(@response.body)
+      assert_equal 200, response['status']
+      assert_equal true, response['ok']
+    end
   end
 
 end

@@ -46,12 +46,8 @@ mt.accounts.editAccount = function(ev) {
     accountId = mt.accounts.getAccountId($(ev.target));
     this.form = $("#new-account-form");
     $.ajax({
-        data: {
-            'authenticity_token' : authenticityToken,
-            'id' : accountId
-        },
-        url: account_path("edit"),
-        type: 'POST',
+        url: account_path(accountId) + '/edit',
+        type: 'GET',
         dataType: 'html',
         success: function(data) {
             $.facebox(data);
