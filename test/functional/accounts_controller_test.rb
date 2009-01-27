@@ -1,6 +1,7 @@
 require 'test_helper'
 require 'accounts_controller'
-require 'json'
+require 'json/add/rails'
+require 'shoulda'
 
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
@@ -45,4 +46,28 @@ class AccountsControllerTest < Test::Unit::TestCase
     assert_equal 400, response['status'] 
     assert_equal false, response['ok'] 
   end
+
+  def test_creating_a_new_account
+    post :create, :account => {:name => "test account",
+      :number => "0987655432",
+      :owner => "Czaja"}
+    response = JSON.parse(@response.body)
+    assert_equal 200, response['status']
+    assert_equal true, response['ok']
+  end
+
+  def test_creating_an_invalid_account
+    post :create, :account => {:owner=> "lolo", :number => "001989837173"}
+    response = JSON.parse!(@response.body)
+    assert_equal 400, response['status']
+    assert_equal false, response['ok']
+  end
+
+  context "on :get should refresh account list" do
+    setup {get :refresh}
+    should_respond_with :success
+    should_assign_to :accounts
+    should_render_template 'accounts/_account_list'
+  end
+
 end
