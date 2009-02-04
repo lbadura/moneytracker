@@ -1,6 +1,32 @@
 pl:
   add: 'Dodaj'
   update: 'Aktualizuj'
+  # new user form
+  login: 'Login'
+  email: 'E-mail'
+  password: 'Hasło'
+  password_confirmation: 'Potwierdzenie hasła'
+  signup: 'Załóż konto'
+  signup_header: 'Rejestracja nowego użytkownika'
+  # login form
+  login_btn: 'Zaloguj'
+  logout_btn: 'Wyloguj'
+  login_header: 'Logowanie'
+  logged_in_as: 'Zalogowany jako '
+  not_logged_in: 'Niezalogowany'
 en:
   add: 'Add'
   update: 'Update'
+  # new user form
+  login: 'Login'
+  email: 'E-mail'
+  password: 'Password'
+  password_confirmation: 'Password confirmation'
+  signup: 'Sign up'
+  signup_header: 'Sign up form'
+  # login form
+  login_btn: 'Login'
+  logout_btn: 'Logout'
+  login_header: 'Please log in'
+  logged_in_as: 'Logged in as '
+  not_logged_in: 'Not logged in'

@@ -102,3 +102,15 @@ div#footer {
   width: 99%;
   text-align: center;
 }
+
+div#user-bar-greeting {
+  position: absolute;
+  top: 28px;
+  right: 18px;
+}
+
+div#user-bar-action {
+  position: absolute;
+  top: 50px;
+  right: 18px;
+}
