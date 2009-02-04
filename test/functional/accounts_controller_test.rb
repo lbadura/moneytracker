@@ -14,6 +14,7 @@ class AccountsControllerTest < Test::Unit::TestCase
     @response   = ActionController::TestResponse.new
     I18n.locale = 'en'
     @account = Account.find(:first)
+    login_as :quentin
   end
   
   def test_index_action
