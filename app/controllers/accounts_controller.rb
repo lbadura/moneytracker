@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   expose :get, :index
   def index
-    @accounts = Account.find(:all, :order => "name ASC")  
+    @accounts = current_user.accounts(:order => "name ASC")
   end
 
   expose :get, :new
@@ -23,6 +23,7 @@ class AccountsController < ApplicationController
   expose :post, :create
   def create
     @account = Account.new(params[:account])
+    @account.user = current_user
     if @account.valid? then
       @account.transaction do
         @account.save
@@ -43,7 +44,7 @@ class AccountsController < ApplicationController
 
   expose :get, :refresh
   def refresh
-    @accounts = Account.find(:all, :order => "name ASC")  
+    @accounts = current_user.accounts(:order => "name ASC")
     return render(:partial => 'accounts/account_list')
   end
 

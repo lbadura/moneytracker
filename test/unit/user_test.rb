@@ -1,42 +1,49 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class UserTest < ActiveSupport::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
-  # Then, you can remove it from this and the functional test.
-  include AuthenticatedTestHelper
-  fixtures :users
+class UserTest < Test::Unit::TestCase
+  fixtures :users, :accounts
 
+  should_have_many :accounts
+
+  def setup
+    I18n.locale = 'en'
+  end
+  
   def test_should_create_user
     assert_difference 'User.count' do
-      user = create_user
+      user = Factory(:user)
       assert !user.new_record?, "#{user.errors.full_messages.to_sentence}"
     end
   end
 
   def test_should_require_login
     assert_no_difference 'User.count' do
-      u = create_user(:login => nil)
+      u = Factory.build(:user, :login => nil)
+      u.valid?
       assert u.errors.on(:login)
     end
   end
 
   def test_should_require_password
     assert_no_difference 'User.count' do
-      u = create_user(:password => nil)
+      u = Factory.build(:user, :password => nil)
+      u.valid?
       assert u.errors.on(:password)
     end
   end
 
   def test_should_require_password_confirmation
     assert_no_difference 'User.count' do
-      u = create_user(:password_confirmation => nil)
+      u = Factory.build(:user, :password_confirmation => nil)
+      u.valid?
       assert u.errors.on(:password_confirmation)
     end
   end
 
   def test_should_require_email
     assert_no_difference 'User.count' do
-      u = create_user(:email => nil)
+      u = Factory.build(:user, :email => nil)
+      u.valid?
       assert u.errors.on(:email)
     end
   end
@@ -92,12 +99,5 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:quentin).remember_token
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
-  end
-
-protected
-  def create_user(options = {})
-    record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))
-    record.save
-    record
   end
 end

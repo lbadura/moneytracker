@@ -13,7 +13,7 @@ class AccountsControllerTest < Test::Unit::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     I18n.locale = 'en'
-    @account = Account.find(:first)
+    @account = Factory(:account)
     login_as :quentin
   end
   
@@ -52,7 +52,9 @@ class AccountsControllerTest < Test::Unit::TestCase
   def test_creating_a_new_account
     post :create, :account => {:name => "test account",
       :number => "0987655432",
-      :owner => "Czaja"}
+      :owner => "Czaja",
+      :user_id => users(:quentin).id
+    }
     response = JSON.parse(@response.body)
     assert_equal 200, response['status']
     assert_equal true, response['ok']

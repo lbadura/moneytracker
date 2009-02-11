@@ -1,10 +1,12 @@
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
+  should_belong_to :user
+  
   def test_creating_an_account
     # Ensure new accounts can be created with default params
     assert_difference 'Account.count' do
-      create_account()
+      Factory(:account)
     end
 
     # Ensure no accounts are created without the nescessary params
