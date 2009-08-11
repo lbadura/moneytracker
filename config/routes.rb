@@ -10,8 +10,9 @@ ActionController::Routing::Routes.draw do |map|
   # resources
   map.resources :users
   map.resource :session
-  map.resources :account_operations
-  map.resources :accounts
+  map.resources :accounts do |account|
+    account.resources :operations
+  end
 
 
   # Install the default routes as the lowest priority.
