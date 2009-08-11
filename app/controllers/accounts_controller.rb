@@ -1,15 +1,12 @@
 class AccountsController < ApplicationController
-  expose :get, :index
   def index
     @accounts = current_user.accounts(:order => "name ASC")
   end
 
-  expose :get, :new
   def new
     return render(:partial => 'accounts/new_account_form', :locals => {:update => false})
   end
 
-  expose [:post, :delete], :destroy
   def destroy
     begin
       @account = Account.find(params[:id])
@@ -20,7 +17,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  expose :post, :create
   def create
     @account = Account.new(params[:account])
     @account.user = current_user
@@ -42,19 +38,16 @@ class AccountsController < ApplicationController
     end
   end
 
-  expose :get, :refresh
   def refresh
     @accounts = current_user.accounts(:order => "name ASC")
     return render(:partial => 'accounts/account_list')
   end
 
-  expose :get, :edit
   def edit
     @account = Account.find_by_id params[:id] unless params[:id].nil? || params[:id].empty?
     return render(:partial => 'accounts/new_account_form', :locals => {:update => true})
   end
 
-  expose [:put, :post], :update
   def update
     Account.transaction do
       @account = Account.find_by_id(params[:id]) unless params[:id].nil? || params[:id].empty? 
@@ -62,5 +55,4 @@ class AccountsController < ApplicationController
     end
     return render(:json => {:ok => true, :status => 200})
   end
-
 end
