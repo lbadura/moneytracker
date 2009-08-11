@@ -3,11 +3,9 @@ class SessionsController < ApplicationController
 
   skip_before_filter :login_required
   # render new.rhtml
-  expose :get, :new
   def new
   end
 
-  expose :post, :create
   def create
     logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])
@@ -29,7 +27,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  expose [:post, :get], :destroy
   def destroy
     logout_killing_session!
     flash[:notice] = "You have been logged out."
