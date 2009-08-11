@@ -6,7 +6,7 @@ require 'shoulda'
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
 
-class AccountsControllerTest < Test::Unit::TestCase
+class AccountsControllerTest < ActionController::TestCase
 
   def setup           
     @controller = AccountsController.new

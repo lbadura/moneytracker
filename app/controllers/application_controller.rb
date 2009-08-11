@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :login_required
 
-  protect_from_forgery :secret      => 'b8dc7f92da4ddf6b905be1084d47676cb4b0c1aca70ba1e9487678d99ca50a1e77a4e308918135566f4de7f37cf1522be2d5e727e3ba0d3bee02c7fc4044ad44'
+  protect_from_forgery
   filter_parameter_logging :password
 
   # overwrite the access denied method to
