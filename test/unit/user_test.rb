@@ -1,9 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  fixtures :users, :accounts
-
   should_have_many :accounts
+  should_have_many :operations
 
   def setup
     I18n.locale = 'en'

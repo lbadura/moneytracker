@@ -10,5 +10,7 @@ class ActiveSupport::TestCase
   self.use_instantiated_fixtures  = false
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def login_user(user)
+    session[:user_id] = user[:id]
+  end
 end

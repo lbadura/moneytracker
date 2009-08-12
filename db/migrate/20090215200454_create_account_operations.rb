@@ -1,6 +1,6 @@
 class CreateAccountOperations < ActiveRecord::Migration
   def self.up
-    create_table :account_operations do |t|
+    create_table :operations do |t|
       t.integer :account_id, :null => false
       t.integer :user_id, :null => false
       t.date :datetime, :null => false
@@ -11,6 +11,6 @@ class CreateAccountOperations < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :account_operations
+    drop_table :operations
   end
 end
