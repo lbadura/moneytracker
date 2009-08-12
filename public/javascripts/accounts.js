@@ -9,7 +9,7 @@ mt.accounts.newAccountForm = function() {
         data: {
             'authenticity_token' : authenticityToken
         },
-        url: account_path("new"),
+        url: new_account_path(""),
         type: 'GET',
         dataType: 'html',
         success: function(data) {
