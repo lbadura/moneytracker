@@ -21,7 +21,6 @@ class AccountTest < ActiveSupport::TestCase
   def create_account(options = {})
     acc = Account.new({:name => 'Some name', 
                       :number => '111111111111111111111111', 
-                      :iban => 'PL0011111111111111111111',
                       :owner => 'Lukasz'
     }.merge(options))
     acc.save

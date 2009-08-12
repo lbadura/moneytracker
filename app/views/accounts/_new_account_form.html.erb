@@ -8,11 +8,7 @@
         <%= hidden_field_tag(:id, params[:id]) %>
       </li>
       <li>
-        <label for="iban"><%=t :account_iban %></label>
-        <%= text_field(:account, :iban) %>
-      </li>
-      <li>
-        <label for="number"><%=t :account_alternative_number %></label>
+        <label for="number"><%=t :account_number %></label>
         <%= text_field(:account, :number) %>
       </li>
       <li>

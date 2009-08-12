@@ -1,7 +1,6 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 require 'accounts_controller'
 require 'json/add/rails'
-require 'shoulda'
 
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
@@ -34,8 +33,7 @@ class AccountsControllerTest < ActionController::TestCase
   end
 
   def test_deleting_an_account
-    account = accounts(:first)
-    post :destroy, :id => account.id
+    post :destroy, :id => @account
     response = JSON.parse(@response.body)
     assert_response :success
     assert_equal 200, response['status'] 
