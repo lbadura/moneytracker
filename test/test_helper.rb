@@ -2,9 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require "rubygems"
 require 'test_help'
-require RAILS_ROOT + '/test/factories/user_factory'
-require RAILS_ROOT + '/test/factories/account_factory'
-require RAILS_ROOT + '/test/factories/account_operation_factory'
+require 'factory_girl'
 
 class ActiveSupport::TestCase
   include AuthenticatedTestHelper
