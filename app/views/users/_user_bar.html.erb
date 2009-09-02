@@ -1,6 +1,5 @@
 <% if logged_in? -%>
-  <div id="user-bar-greeting"><%=t :logged_in_as %><%= link_to_current_user :content_method => :login %></div>
-  <div id="user-bar-action"  >(<%= link_to t(:logout_btn), logout_path, { :title => t(:logout_btn) }    %>)</div>
+  <div id="user-bar-greeting"><%= image_tag('icons/user.png', :class => 'icon')  %><%= current_user.login %></div>
 <% else -%>
   <div id="user-bar-greeting"><%= link_to_login_with_IP t(:not_logged_in), :style => 'border: none;' %></div>
   <div id="user-bar-action"  ><%= link_to t(:login_btn),  login_path,  { :title => t(:login_btn) } %> /

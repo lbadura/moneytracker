@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # resources
   map.resources :users
+  map.resources :operations, :only => :index
   map.resource :session
   map.resources :accounts do |account|
     account.resources :operations
