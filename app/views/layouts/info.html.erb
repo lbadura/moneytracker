@@ -3,28 +3,17 @@
   <head>
     <title>MoneyTracker</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" /> 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <%= stylesheet_link_tag 'mt_layout', 'mt_forms', 'mt_data_tables', 'facebox' %>
     <%= javascript_include_tag 'jquery', 'facebox', 'less_routes', 'forms_core' %>
     <%= javascript_tag "var authenticityToken = '#{form_authenticity_token}';" %>
   </head>
   <body>
-    <div id="topcontainer">
-      <div id="logo">
-        <%= image_tag("logo.png", :alt => 'MoneyTracker logo') %> 
-      </div>
-      <div id="navcontainer">
-        <ul id="navlist">
-          <%= main_menu() %>
-        </ul>
-      </div>
-      <%= render(:file => 'users/_user_bar') %>
-    </div>
-    <div id="content">
-      <%= yield %>
-    </div>
-    <div id="footer">
-      <%= render(:partial => 'shared/footer') %>
+    <div id="info-container">
+      <div id="logo"><%= image_tag("logo.png", :alt => 'MoneyTracker logo') %></div>
+      <div id="info-content"><%= yield %></div>
+      <div id="footer"><%= render(:partial => 'shared/footer') %></div>
     </div>
   </body>
 </html>
+

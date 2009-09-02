@@ -98,7 +98,7 @@ div#context-menu {
 }
 
 div#footer {
-  margin: 0 auto;
+  margin: 40px auto;
   width: 99%;
   text-align: center;
 }
@@ -113,4 +113,19 @@ div#user-bar-action {
   position: absolute;
   top: 50px;
   right: 18px;
+}
+
+div#info-container {
+  text-align: center;
+  margin: 5% 0 0 0;
+  padding: 0px;
+}
+
+div#info-content {
+  width: 500px;
+  text-align: left;
+  padding: 10px 0 10px 20%;
+  border:1px dashed #333;
+	background-color:#eee;
+  margin: 0px auto;
 }

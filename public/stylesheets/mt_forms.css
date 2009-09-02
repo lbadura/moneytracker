@@ -22,7 +22,7 @@ form.mt-form *.error-field {
 }
 
 form.mt-form span.error-explanation {
-  font-color: red;
+  color: red;
   border-bottom: 1px dotted red;
   vertical-align: center;
   float: right;
@@ -31,4 +31,9 @@ form.mt-form span.error-explanation {
 form.mt-form label {
   margin: 0;
   padding: 0;
+}
+
+input {
+  border: 1px solid #999;
+  color: #000;
 }

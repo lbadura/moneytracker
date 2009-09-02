@@ -2,8 +2,9 @@
 class SessionsController < ApplicationController
 
   skip_before_filter :login_required
-  # render new.rhtml
+
   def new
+    render :layout => "info"
   end
 
   def create
@@ -23,7 +24,7 @@ class SessionsController < ApplicationController
       note_failed_signin
       @login       = params[:login]
       @remember_me = params[:remember_me]
-      render :action => 'new'
+      render(:action => 'new', :layout => "info")
     end
   end
 
