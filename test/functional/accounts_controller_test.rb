@@ -1,6 +1,5 @@
 require File.dirname(__FILE__) + '/../test_helper'
 require 'accounts_controller'
-require 'json/add/rails'
 
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
@@ -42,7 +41,7 @@ class AccountsControllerTest < ActionController::TestCase
 
   def test_deleting_an_nonexisting_account
     post :destroy, :id => nil
-    response = JSON.parse(@response.body)
+    response = ActiveSupport::JSON.decode(@response.body)
     assert_equal 400, response['status'] 
     assert_equal false, response['ok'] 
   end
@@ -53,14 +52,14 @@ class AccountsControllerTest < ActionController::TestCase
       :owner => "Czaja",
       :user_id => users(:quentin).id
     }
-    response = JSON.parse(@response.body)
+    response = ActiveSupport::JSON.decode(@response.body)
     assert_equal 200, response['status']
     assert_equal true, response['ok']
   end
 
   def test_creating_an_invalid_account
     post :create, :account => {:owner=> "lolo", :number => "001989837173"}
-    response = JSON.parse(@response.body)
+    response = ActiveSupport::JSON.decode(@response.body)
     assert_equal 400, response['status']
     assert_equal false, response['ok']
   end
