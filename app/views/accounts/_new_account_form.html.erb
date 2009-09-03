@@ -15,9 +15,7 @@
         <label for="owner"><%=t :account_owner %></label>
         <%= text_field(:account, :owner) %>
       </li>
-      <li>
-      </li>
     </ul>
-    <input type="button" name="add-account-button" id="add-account-button" value="<%= update ? t(:update) : t(:add) %>">
   </fieldset>
+  <input type="button" class="button" name="add-account-button" id="add-account-button" value="<%= update ? t(:update) : t(:add) %>">
 <% end -%>

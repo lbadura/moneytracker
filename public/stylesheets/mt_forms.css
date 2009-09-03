@@ -1,5 +1,5 @@
 form.mt-form {
-  
+  padding: 20px;
 }
 
 form.mt-form ul {
@@ -8,7 +8,6 @@ form.mt-form ul {
 
 form.mt-form li {
   margin: 0;
-  display: inline;
   float: right;
 }
 
@@ -36,4 +35,10 @@ form.mt-form label {
 input {
   border: 1px solid #999;
   color: #000;
+  margin: 2px 0px 2px 0px;
 }
+
+.button {
+  float: right;
+}
+
