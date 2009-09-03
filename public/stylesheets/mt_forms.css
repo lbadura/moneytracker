@@ -28,7 +28,7 @@ form.mt-form span.error-explanation {
 }
 
 form.mt-form label {
-  margin: 0;
+  margin-right: 5px;
   padding: 0;
 }
 
@@ -36,9 +36,14 @@ input {
   border: 1px solid #999;
   color: #000;
   margin: 2px 0px 2px 0px;
+  float: right;
 }
 
 .button {
+  float: right;
+}
+
+.error-explanation {
   float: right;
 }
 
