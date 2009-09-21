@@ -1,6 +1,6 @@
 class OperationsController < ApplicationController
   def index
-    
+    @operations = current_user.operations
   end
   
   def new
